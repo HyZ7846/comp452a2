@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="assign2">
+    <output-path>$PROJECT_DIR$/out/artifacts/assign2</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="assign2.assign2.GameApplication" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="dmg" />
+        <option name="title" value="Portable Path-finding" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="assign2.jar">
+        <element id="module-output" name="assign2" />
+      </element>
+    </root>
+  </artifact>
+</component>
