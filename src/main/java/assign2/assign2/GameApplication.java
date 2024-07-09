@@ -25,8 +25,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class GameApplication extends Application {
-    private static final int GRID_SIZE = 16;
-    private Rectangle[][] cells = new Rectangle[GRID_SIZE][GRID_SIZE];
+    private Rectangle[][] cells = new Rectangle[16][16];
     private Circle robot;
 
     private enum Tool { NONE, START_POINT, END_POINT, GRASSLAND, SWAMPLAND, OBSTACLE }
@@ -71,8 +70,8 @@ public class GameApplication extends Application {
         gameGrid.setHgap(3);
         gameGrid.setVgap(3);
 
-        for (int row = 0; row < GRID_SIZE; row++) {
-            for (int col = 0; col < GRID_SIZE; col++) {
+        for (int row = 0; row < 16; row++) {
+            for (int col = 0; col < 16; col++) {
                 Rectangle cell = new Rectangle();
                 cell.setFill(Color.LIGHTGRAY);
                 cell.setStroke(Color.BLACK);
@@ -98,10 +97,10 @@ public class GameApplication extends Application {
     private void resizeCells(GridPane gridPane, Stage stage) {
         double availableWidth = stage.getWidth() - 90;  // Subtract some padding/margin
         double availableHeight = stage.getHeight() - 170; // Subtract some padding/margin and space taken by other components
-        double cellSize = Math.min(availableWidth / GRID_SIZE, availableHeight / GRID_SIZE);
+        double cellSize = Math.min(availableWidth / 16, availableHeight / 16);
 
-        for (int row = 0; row < GRID_SIZE; row++) {
-            for (int col = 0; col < GRID_SIZE; col++) {
+        for (int row = 0; row < 16; row++) {
+            for (int col = 0; col < 16; col++) {
                 Rectangle cell = cells[row][col];
                 cell.setWidth(cellSize);
                 cell.setHeight(cellSize);
@@ -204,7 +203,7 @@ public class GameApplication extends Application {
             for (int[] dir : new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}) {
                 int newRow = current.row + dir[0];
                 int newCol = current.col + dir[1];
-                if (newRow < 0 || newRow >= GRID_SIZE || newCol < 0 || newCol >= GRID_SIZE) continue;
+                if (newRow < 0 || newRow >= 16 || newCol < 0 || newCol >= 16) continue;
 
                 double newCost = current.g + getCost(newRow, newCol);
                 Node neighbor = allNodes.get(newRow + "," + newCol);
