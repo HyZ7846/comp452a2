@@ -1,5 +1,13 @@
 package assign2.assign2;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -15,8 +23,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.util.*;
 
 public class GameApplication extends Application {
     private static final int GRID_SIZE = 16;
@@ -80,7 +86,7 @@ public class GameApplication extends Application {
         root.setAlignment(javafx.geometry.Pos.CENTER);
         root.setPadding(new javafx.geometry.Insets(30));  // Add 30-pixel margin
 
-        Scene scene = new Scene(root, 560, 660);  // Adjusted size to account for the 30-pixel margin
+        Scene scene = new Scene(root, 560, 690);  // Adjusted size to account for the 30-pixel margin at the bottom
         stage.setTitle("Path-Finding Game");
         stage.setScene(scene);
         stage.setResizable(false);  // Make the window non-resizable
@@ -120,7 +126,7 @@ public class GameApplication extends Application {
             return;
         }
 
-        // Otherwise, set the cell based on the selected tool
+        // Set the cell based on the selected tool
         switch (selectedTool) {
             case START_POINT:
                 if (startPoint != null) {
@@ -140,15 +146,12 @@ public class GameApplication extends Application {
                 break;
             case GRASSLAND:
                 clickedCell.setFill(Color.GREEN);
-                selectedTool = Tool.NONE;
                 break;
             case SWAMPLAND:
                 clickedCell.setFill(Color.BROWN);
-                selectedTool = Tool.NONE;
                 break;
             case OBSTACLE:
                 clickedCell.setFill(Color.BLACK);
-                selectedTool = Tool.NONE;
                 break;
             default:
                 break;
